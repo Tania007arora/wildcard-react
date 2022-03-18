@@ -1,4 +1,7 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import UserDetails from './pages/userDetails';
+import Users from './pages/Users';
 
 function App() {
 
@@ -36,6 +39,16 @@ function App() {
 
   return (
     <ThemeProvider theme={customtheme}>
+      <Router>
+        <Route path="/admin" element={<AdminHome />}>
+          <Route path="users" element={<Users />}></Route>
+          <Route path="users/:userId" element={<UserDetails />}></Route>
+          {/* // <Route path="posts" element={ }></Route>
+          // <Route path="posts/:postId" element={ }></Route>
+          // <Route path="albums" element={ }></Route>
+          // <Route path="albums/:albumId" element={ }></Route> */}
+        </Route>
+      </Router>
     </ThemeProvider>
   );
 }
