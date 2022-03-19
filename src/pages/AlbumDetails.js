@@ -14,7 +14,7 @@ function AlbumDetails() {
   const albumfields = [
     {
       key: "Title",
-      value: details.title //see if works
+      value: "title" //see if works
     }
   ]
   useEffect(() => {
@@ -29,26 +29,30 @@ function AlbumDetails() {
 
   return (
     <Box p={3}>
+      <CustomHeading title="Album" />
       <CustomTitleHeading title="Details:" />
       {details && <>
-        <Grid container>
-          {albumfields && albumfields.map((field) => {
-            return <Box key={field.key}><Grid item md={4}>
-              <Typography variant="h5">{field.key}</Typography>
+
+        {albumfields && albumfields.map((field) => {
+          return <Grid container key={field.key}><Grid item md={4}>
+            <Typography variant="body1">{field.key}</Typography>
+          </Grid>
+            <Grid item md={8}>
+              <Typography variant="subtitle" sx={{ fontSize: '1rem' }}>{details[field.value]}</Typography>
             </Grid>
-              <Grid item md={8}>
-                <Typography variant="subtitle" sx={{ fontSize: '1rem' }}>{field.value}</Typography>
-              </Grid>
-            </Box>
-          })
-          }
-        </Grid>
+          </Grid>
+        })
+        }
+
         <Box pt={2}>
-          <CustomHeading title="Comments" />
+          <CustomHeading title="Photos" />
           {photos ? <Grid container>
             {photos.map((photo) => {
-              return <Grid key={photo.id} item md={6}>
-                <ImageDiv sx={{ backgroundImage: `url(${photo.thumbnailUrl})` }} />
+              console.log(photo)
+              return <Grid key={photo.id} item md={3}>
+                <Box sx={{ height: '150px', width: '150px', p: 2 }}>
+                  <ImageDiv sx={{ backgroundImage: `url(${photo.thumbnailUrl})` }} />
+                </Box>
               </Grid>
             })
             }

@@ -49,10 +49,15 @@ function App() {
             <Route path="users" element={<Users />}></Route>
             <Route path="users/:userId" element={<UserDetails />}></Route>
             <Route path="posts" element={<Posts />}></Route>
+            <Route path="posts/user/:userId" element={<Posts />}></Route>
             <Route path="posts/:postId" element={<PostDetails />}></Route>
             <Route path="albums" element={<Albums />}></Route>
             <Route path="albums/:albumId" element={<AlbumDetails />}></Route>
+            <Route path="albums/user/:userId" element={<Albums />}></Route>
+
           </Route>
+
+          {/* <Route path="users/:userId" element={<UserDetails />}></Route> */}
         </Routes>
       </Router>
     </ThemeProvider>

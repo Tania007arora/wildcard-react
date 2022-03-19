@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import CustomHeading from '../components/CustomHeading'
 import CustomTitleHeading from '../components/CustomTitleHeading';
 import { getPosts } from '../services/postServices';
@@ -10,17 +10,27 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 function Posts() {
-  //if param-filter those posts with user id in param
+  const { userId } = useParams();
   let [posts, setPosts] = useState([]);
+  const handleParams = useCallback((posts) => {
+    setPosts(posts.filter(function (value) {
+      return value.userId == userId;
+    }));
+  }, [userId]);
   useEffect(() => {
-    getPosts(setPosts);
-  }, [])
+    if (userId) {
+      getPosts(handleParams)
+    }
+    else {
+      getPosts(setPosts);
+    }
+  }, [userId, handleParams])
   return (
     <Box p={3}>
       <CustomHeading title="Posts" />
-      {posts ? <TableContainer component={Paper}>
+      {posts && posts.length > 0 ? <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -38,11 +48,16 @@ function Posts() {
                 key={row.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
+                <TableCell align="center">{row.id}</TableCell>
+
                 <TableCell component="th" scope="row" align="center">
-                  <Link to={`admin//users/${row.id}`}>{row.title}</Link>
+                  {row.title}
                 </TableCell>
                 <TableCell align="center">{row.body}</TableCell>
-                <TableCell align="center">{row.id}</TableCell>
+                <TableCell align="center">
+                  <Link to={`/admin/users/${row.userId}`}>View User | </Link>
+                  <Link to={`/admin/posts/${row.id}`}>View Comments</Link>
+                </TableCell>
                 {/* TODO actions view post by this user,call page with userid in param,use that param to filter
                 posts by that user->take to page of list of posts(make it as different component) */}
               </TableRow>
@@ -50,7 +65,7 @@ function Posts() {
           </TableBody>
         </Table>
       </TableContainer> :
-        <CustomTitleHeading title="No User Data" />
+        <CustomTitleHeading title="No Posts Yet" />
       }
     </Box>
   )

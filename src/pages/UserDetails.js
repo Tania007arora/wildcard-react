@@ -14,31 +14,31 @@ function UserDetails() {
   const fields = [
     {
       key: "Id",
-      value: details.id //see if works
+      value: "id" //see if works
     },
     {
       key: "Name",
-      value: details.name
+      value: "name"
     },
     {
       key: "UserName",
-      value: details.username
+      value: "username"
     },
     {
       key: "Email",
-      value: details.email
+      value: "email"
     },
     {
       key: "Phone Number",
-      value: details.phone
+      value: "phone"
     },
     {
       key: "Website",
-      value: details.website
+      value: "website"
     },
     {
       key: "Company",
-      value: details.name
+      value: "name"
     },
   ]
   return (
@@ -46,21 +46,22 @@ function UserDetails() {
       <CustomHeading title="Users" />
       <CustomTitleHeading title="Details:" />
       {details && <>
-        <Grid container>
-          {fields && fields.map((field) => {
-            return <Box key={field.key}><Grid item md={4}>
-              <Typography variant="h5">{field.key}</Typography>
+
+        {fields && fields.map((field) => {
+          return <Grid container key={field.key}>
+            <Grid item md={4}>
+              <Typography variant="body1">{field.key}</Typography>
             </Grid>
-              <Grid item md={8}>
-                <Typography variant="subtitle" sx={{ fontSize: '1rem' }}>{field.value}</Typography>
-              </Grid>
-            </Box>
-          })
-          }
-        </Grid>
-        <Box sx={{ display: 'flex', justifyContent: "space-around" }}>
-          <Button variant="outlined" sx={{ textTransform: 'none', mt: 2 }} component={Link} to={'/changeShippingDetails'}>View Posts</Button>
-          <Button variant="outlined" sx={{ textTransform: 'none', mt: 2 }} component={Link} to={'/changeShippingDetails'}>View Albums</Button>
+            <Grid item md={8}>
+              <Typography variant="subtitle" sx={{ fontSize: '.8rem' }}>{details[field.value]}</Typography>
+            </Grid>
+          </Grid>
+        })
+        }
+
+        <Box sx={{ display: 'flex', justifyContent: "space-between" }}>
+          <Button variant="outlined" sx={{ textTransform: 'none', mt: 2 }} component={Link} to={`/admin/posts/user/${details.id}`}>View Posts</Button>
+          <Button variant="outlined" sx={{ textTransform: 'none', mt: 2 }} component={Link} to={`/admin/albums/user/${details.id}`}>View Albums</Button>
         </Box>
       </>
       }
