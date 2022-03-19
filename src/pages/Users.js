@@ -1,4 +1,4 @@
-import { Box } from '@mui/materia';
+import { Box } from '@mui/material';
 import { useState, useEffect } from 'react'
 import CustomHeading from '../components/CustomHeading';
 import { getUsers } from '../services/userDetailsServices';
@@ -68,4 +68,3 @@ function Users() {
 }
 
 export default Users
-CustomHeading

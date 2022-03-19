@@ -1,17 +1,16 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { getUserDetails } from '../services/userDetailsServices';
 import CustomTitleHeading from '../components/CustomTitleHeading';
 import CustomHeading from '../components/CustomHeading';
-import Button from '@mui/material/Button';
 
 function UserDetails() {
   const { userId } = useParams();
   let [details, setDetails] = useState();
   useEffect(() => {
     getUserDetails(setDetails, userId);
-  }, [])
+  }, [userId])
   const fields = [
     {
       key: "Id",

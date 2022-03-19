@@ -1,6 +1,6 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import CustomHeading from '../components/CustomHeading';
 import CustomTitleHeading from '../components/CustomTitleHeading';
 import { getPostDetails, getPostComments } from '../services/postServices';
@@ -12,7 +12,7 @@ function PostDetails() {
   useEffect(() => {
     getPostDetails(setDetails, postId);
     getPostComments(setComments, postId);
-  }, [])
+  }, [postId])
   const postfields = [
     {
       key: "Title",
@@ -27,7 +27,7 @@ function PostDetails() {
     <Box p={3}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <CustomHeading title="Post" />
-        <Button variant="outlined" sx={{ textTransform: 'none', mt: 2 }} component={Link} to={`/admin/users/${Ddetails.userId}`}>View User</Button>
+        <Button variant="outlined" sx={{ textTransform: 'none', mt: 2 }} component={Link} to={`/admin/users/${details.userId}`}>View User</Button>
       </Box>
       <CustomTitleHeading title="Details:" />
 

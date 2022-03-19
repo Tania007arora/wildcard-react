@@ -18,7 +18,7 @@ export function getPostDetails(setPost, postId) {
 
 export function getPostComments(setComment, postId) {
   axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`).then((response,) => {
-    setPost(response.data);
+    setComment(response.data);
   }).catch((error) => {
     console.log("Error Occurred");
   })

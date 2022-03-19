@@ -1,7 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { getAlbumDetails, getPhotos } from '../services/postServices';
+import { getAlbumDetails, getPhotos } from '../services/albumServices';
 import { styled } from '@mui/material/styles';
+import { useParams } from 'react-router-dom';
+import { Box, Grid, Typography } from '@mui/material';
+import CustomTitleHeading from '../components/CustomTitleHeading';
+import CustomHeading from '../components/CustomHeading';
 
 function AlbumDetails() {
   let [details, setDetails] = useState();
@@ -16,7 +20,7 @@ function AlbumDetails() {
   useEffect(() => {
     getAlbumDetails(setDetails, albumId);
     getPhotos(setPhotos, albumId);
-  }, [])
+  }, [albumId])
   const ImageDiv = styled(Box)(
     {
       backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', width: '100%', height: '100%'

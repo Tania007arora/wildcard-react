@@ -2,6 +2,7 @@ import { Box } from '@mui/material'
 import React from 'react'
 import { Link } from "react-router-dom";
 import '../App.css';
+import CustomTitleHeading from './CustomTitleHeading';
 
 function Dashboard() {
   const dashboardItems = [
@@ -22,7 +23,7 @@ function Dashboard() {
     }
   ]
   return (
-    <Box style={{ backgroundColor: 'primary.light', height: '100vh', minHeight: '100%', paddingTop: '50px' }}>
+    <Box style={{ backgroundColor: '#CDC9C9', height: '100vh', minHeight: '100%', paddingTop: '50px' }}>
       {dashboardItems.map((item) => {
         return <Link to={item.link} key={item.id} style={{ textDecoration: 'None', color: "#000000" }}>
           <div style={{ display: 'flex', alignItems: 'center', padding: '15px' }} className="progress2" >

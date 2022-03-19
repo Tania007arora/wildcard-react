@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import React from 'react'
+import { useState, useEffect } from 'react'
 import CustomHeading from '../components/CustomHeading'
 import { getAlbums } from '../services/albumServices';
 import Table from '@mui/material/Table';
@@ -9,6 +9,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
+import CustomTitleHeading from '../components/CustomTitleHeading';
+
 function Albums() {
   let [albums, setAlbums] = useState([]);
   useEffect(() => {
