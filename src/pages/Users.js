@@ -50,7 +50,7 @@ function Users() {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row" align="center">
-                  <Link to={`/users/${row.id}`}>{row.name}</Link>
+                  <Link to={`admin/users/${row.id}`}>{row.name}</Link>
                 </TableCell>
                 <TableCell align="center">{row.email}</TableCell>
                 <TableCell align="center">{row.id}</TableCell>

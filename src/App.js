@@ -1,5 +1,7 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import PostDetails from './pages/PostDetails';
+import Posts from './pages/Posts';
 import UserDetails from './pages/userDetails';
 import Users from './pages/Users';
 
@@ -43,9 +45,9 @@ function App() {
         <Route path="/admin" element={<AdminHome />}>
           <Route path="users" element={<Users />}></Route>
           <Route path="users/:userId" element={<UserDetails />}></Route>
-          {/* // <Route path="posts" element={ }></Route>
-          // <Route path="posts/:postId" element={ }></Route>
-          // <Route path="albums" element={ }></Route>
+          <Route path="posts" element={<Posts />}></Route>
+          <Route path="posts/:postId" element={<PostDetails />}></Route>
+          {/*  <Route path="albums" element={ }></Route>
           // <Route path="albums/:albumId" element={ }></Route> */}
         </Route>
       </Router>

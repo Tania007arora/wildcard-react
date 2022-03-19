@@ -1,5 +1,5 @@
 import { Box, Grid } from '@mui/material';
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import CustomHeading from '../components/CustomHeading';
 import CustomTitleHeading from '../components/CustomTitleHeading';
@@ -27,7 +27,7 @@ function PostDetails() {
     <Box p={3}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <CustomHeading title="Post" />
-        <Button variant="outlined" sx={{ textTransform: 'none', mt: 2 }} component={Link} to={`users/${Ddetails.userId}`}>View User</Button>
+        <Button variant="outlined" sx={{ textTransform: 'none', mt: 2 }} component={Link} to={`/admin/users/${Ddetails.userId}`}>View User</Button>
       </Box>
       <CustomTitleHeading title="Details:" />
 

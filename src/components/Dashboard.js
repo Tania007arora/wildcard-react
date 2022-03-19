@@ -8,17 +8,17 @@ function Dashboard() {
     {
       id: 1,
       name: "Users",
-      link: "",
+      link: "/admin/users",
     },
     {
       id: 2,
       name: "Posts",
-      link: "",
+      link: "/admin/posts",
     },
     {
       id: 3,
       name: "Albums",
-      link: "",
+      link: "/admin/albums",
     }
   ]
   return (
