@@ -36,10 +36,8 @@ function Albums() {
           <TableHead>
             <TableRow>
               <TableCell align="center">Id</TableCell>
-              {/* //map column */}
               <TableCell align="center">Title</TableCell>
               <TableCell align="center">Actions</TableCell>
-
             </TableRow>
           </TableHead>
           <TableBody>
@@ -57,8 +55,6 @@ function Albums() {
                   <Link to={`/admin/users/${row.userId}`}>View User | </Link>
                   <Link to={`/admin/albums/${row.id}`}>View Photos</Link>
                 </TableCell>
-                {/* TODO actions view post by this user,call page with userid in param,use that param to filter
-                posts by that user->take to page of list of posts(make it as different component) */}
               </TableRow>
             ))}
           </TableBody>

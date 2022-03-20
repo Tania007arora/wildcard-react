@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import React from 'react'
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import '../App.css';
 import CustomTitleHeading from './CustomTitleHeading';
 
@@ -9,22 +9,17 @@ function Dashboard() {
     {
       id: 1,
       name: "Users",
-      link: "/admin/users",
-      color: window.location.href.indexOf("user") > -1 ? '#acacac' : '#CDC9C9'
+      link: "/admin/users"
     },
     {
       id: 2,
       name: "Posts",
-      link: "/admin/posts",
-      color: window.location.href.indexOf("post") > -1 ? '#acacac' : '#CDC9C9'
-
+      link: "/admin/posts"
     },
     {
       id: 3,
       name: "Albums",
-      link: "/admin/albums",
-      color: window.location.href.indexOf("album") > -1 ? '#acacac' : '#CDC9C9'
-
+      link: "/admin/albums"
     }
   ]
   return (

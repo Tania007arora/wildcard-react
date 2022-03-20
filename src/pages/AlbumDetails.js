@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react'
 import { getAlbumDetails, getPhotos } from '../services/albumServices';
 import { styled } from '@mui/material/styles';
 import { useParams } from 'react-router-dom';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import CustomTitleHeading from '../components/CustomTitleHeading';
 import CustomHeading from '../components/CustomHeading';
+import CustomContent from '../components/CustomContent';
+import CustomSubHeading from '../components/CustomSubHeading';
 
 function AlbumDetails() {
   let [details, setDetails] = useState();
@@ -14,7 +16,7 @@ function AlbumDetails() {
   const albumfields = [
     {
       key: "Title",
-      value: "title" //see if works
+      value: "title"
     }
   ]
   useEffect(() => {
@@ -35,10 +37,10 @@ function AlbumDetails() {
 
         {albumfields && albumfields.map((field) => {
           return <Grid container key={field.key}><Grid item md={4}>
-            <Typography variant="body1">{field.key}</Typography>
+            <CustomSubHeading value={field.key} />
           </Grid>
             <Grid item md={8}>
-              <Typography variant="subtitle" sx={{ fontSize: '1rem' }}>{details[field.value]}</Typography>
+              <CustomContent value={details[field.value]} />
             </Grid>
           </Grid>
         })
@@ -48,7 +50,6 @@ function AlbumDetails() {
           <CustomHeading title="Photos" />
           {photos ? <Grid container>
             {photos.map((photo) => {
-              console.log(photo)
               return <Grid key={photo.id} item md={3}>
                 <Box sx={{ height: '150px', width: '150px', p: 2 }}>
                   <ImageDiv sx={{ backgroundImage: `url(${photo.thumbnailUrl})` }} />

@@ -36,8 +36,7 @@ function Users() {
             {users.map((row) => (
               <TableRow
                 key={row.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell component="th" scope="row" align="center">
                   {row.id}
                 </TableCell>
@@ -49,8 +48,6 @@ function Users() {
                   <Link to={`/admin/posts/user/${row.id}`}>View Posts | </Link>
                   <Link to={`/admin/albums/user/${row.id}`}>View Albums</Link>
                 </TableCell>
-                {/* TODO actions view post by this user,call page with userid in param,use that param to filter
-                posts by that user->take to page of list of posts(make it as different component) */}
               </TableRow>
             ))}
           </TableBody>

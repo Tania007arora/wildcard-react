@@ -27,19 +27,17 @@ function Posts() {
       getPosts(setPosts);
     }
   }, [userId, handleParams])
+  const columns = ["Id", "Title", "Body", "Actions"]
   return (
-    <Box p={3}>
+    <Box p={4}>
       <CustomHeading title="Posts" />
       {posts && posts.length > 0 ? <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Id</TableCell>
-              {/* //map column */}
-              <TableCell align="center">Title</TableCell>
-              {/* link to userdetails page */}
-              <TableCell align="center">Body</TableCell>
-              <TableCell align="center">Actions</TableCell>
+              {columns.map((column) => {
+                return <TableCell key={column} align="center">{column}</TableCell>
+              })}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -49,7 +47,6 @@ function Posts() {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell align="center">{row.id}</TableCell>
-
                 <TableCell component="th" scope="row" align="center">
                   {row.title}
                 </TableCell>
@@ -58,8 +55,6 @@ function Posts() {
                   <Link to={`/admin/users/${row.userId}`}>View User | </Link>
                   <Link to={`/admin/posts/${row.id}`}>View Comments</Link>
                 </TableCell>
-                {/* TODO actions view post by this user,call page with userid in param,use that param to filter
-                posts by that user->take to page of list of posts(make it as different component) */}
               </TableRow>
             ))}
           </TableBody>

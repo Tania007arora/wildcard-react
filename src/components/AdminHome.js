@@ -10,7 +10,7 @@ function AdminHome() {
       <Grid item md={2}>
         <Dashboard />
       </Grid>
-      <Grid item md={8}>
+      <Grid item md={10}>
         <Navbar />
         <Outlet />
       </Grid>

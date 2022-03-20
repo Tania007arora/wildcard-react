@@ -1,9 +1,11 @@
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid } from '@mui/material'
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { getUserDetails } from '../services/userDetailsServices';
 import CustomTitleHeading from '../components/CustomTitleHeading';
 import CustomHeading from '../components/CustomHeading';
+import CustomSubHeading from '../components/CustomSubHeading';
+import CustomContent from '../components/CustomContent';
 
 function UserDetails() {
   const { userId } = useParams();
@@ -14,7 +16,7 @@ function UserDetails() {
   const fields = [
     {
       key: "Id",
-      value: "id" //see if works
+      value: "id"
     },
     {
       key: "Name",
@@ -50,10 +52,10 @@ function UserDetails() {
         {fields && fields.map((field) => {
           return <Grid container key={field.key}>
             <Grid item md={4}>
-              <Typography variant="body1">{field.key}</Typography>
+              <CustomSubHeading value={field.key} />
             </Grid>
             <Grid item md={8}>
-              <Typography variant="subtitle" sx={{ fontSize: '.8rem' }}>{details[field.value]}</Typography>
+              <CustomContent value={details[field.value]} />
             </Grid>
           </Grid>
         })

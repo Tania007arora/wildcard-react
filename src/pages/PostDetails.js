@@ -1,7 +1,10 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
+import CommentCard from '../components/CommentCard';
+import CustomContent from '../components/CustomContent';
 import CustomHeading from '../components/CustomHeading';
+import CustomSubHeading from '../components/CustomSubHeading';
 import CustomTitleHeading from '../components/CustomTitleHeading';
 import { getPostDetails, getPostComments } from '../services/postServices';
 
@@ -24,7 +27,7 @@ function PostDetails() {
     }
   ]
   return (
-    <Box p={3}>
+    <Box p={4}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <CustomHeading title="Post" />
         {details && <Button variant="outlined" sx={{ textTransform: 'none', mt: 2 }} component={Link} to={`/admin/users/${details.userId}`}>View User</Button>}
@@ -36,10 +39,10 @@ function PostDetails() {
         {postfields && postfields.map((field) => {
           return <Grid container key={field.key}>
             <Grid item md={4}>
-              <Typography variant="body1">{field.key}</Typography>
+              <CustomSubHeading value={field.key} />
             </Grid>
             <Grid item md={8}>
-              <Typography variant="subtitle" sx={{ fontSize: '1rem' }}>{details[field.value]}</Typography>
+              <CustomContent value={details[field.value]} />
             </Grid>
           </Grid>
         })
@@ -48,27 +51,7 @@ function PostDetails() {
           <CustomHeading title="Comments" />
           {comments ? <Grid container>
             {comments.map((comment) => {
-              return <Grid item md={6} key={comment.id}>
-                <Box p={2} m={2} sx={{ border: 1 }}>
-                  <Grid container spacing={2}>
-                    <Grid item md={4}>
-                      <Typography variant="body1" >Name</Typography>
-                    </Grid>
-                    <Grid item md={8}>
-                      <Typography variant="subtitle" sx={{ fontSize: '.8rem' }}>{comment.name}</Typography>
-                    </Grid>
-                  </Grid>
-                  <Grid container spacing={2}>
-                    <Grid item md={4}>
-                      <Typography variant="body1">Email</Typography>
-                    </Grid>
-                    <Grid item md={8}>
-                      <Typography variant="subtitle" sx={{ fontSize: '.8rem' }}>{comment.email}</Typography>
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle" sx={{ pt: 2, fontSize: '.8rem' }}>{comment.body}</Typography>
-                </Box>
-              </Grid>
+              return <CommentCard commentData={comment} key={comment.id} />
             })
             }
           </Grid>
